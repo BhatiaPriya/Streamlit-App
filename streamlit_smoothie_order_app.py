@@ -17,7 +17,7 @@ st.write('The name on your Smoothie will be:', name_on_order)
 
 cnx = st.connection('snowflake')  
 session = cnx.session()            
-# session = get_active_session()  # streamlit in snowflake(SiS)
+# session = get_active_session()  # for streamlit in snowflake(SiS)
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON'))
 # st.dataframe(data=my_dataframe, use_container_width=True)
@@ -35,8 +35,6 @@ ingredients_list = st.multiselect(
 )
 
 if ingredients_list:
-    # st.write(ingredients_list)
-    # st.text(ingredients_list)
 
     ingredients_string = ''
     for fruit_chosen in ingredients_list:
